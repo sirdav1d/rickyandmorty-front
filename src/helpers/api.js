@@ -5,4 +5,4 @@ const Charcontext = {
 export const Api = {
   baseUrl: 'https://api-ramv1.herokuapp.com/',
   ...Charcontext,
-}; 
+};
