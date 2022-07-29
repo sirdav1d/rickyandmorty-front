@@ -1,0 +1,6 @@
+.Home {
+  position: relative;
+  background: var(--black);
+  min-height: 100vh;
+  color: var(--white);
+}

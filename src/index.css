@@ -1,5 +1,19 @@
-*{
+:root {
+  --black: #262626;
+  --white: #f6f6f6
+}
+
+
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: auto;
+  width: 100%;
 }
