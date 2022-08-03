@@ -1,0 +1,13 @@
+.CardList_container {
+  margin-bottom: 8px;
+}
+
+.CardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 140px;
+  margin-bottom: 16px;
+}

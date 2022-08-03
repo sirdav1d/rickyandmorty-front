@@ -1,20 +1,14 @@
 import './card.css';
 
-function Card() {
+function Card(props) {
   return (
     <div className="card">
-      <div className='cardImg'>
-        <img
-          src="https://rickandmortyapi.com/api/character/avatar/159.jpeg"
-          alt="MORTY SANCHES"
-        />
+      <div className="cardImg">
+        <img src={props.foto} alt={props.nome} />
       </div>
-      <div className='cardContent'>
-        <h1>MORTY SANCHES</h1>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas
-          quisquam qui dolorum.
-        </p>
+      <div className="cardContent">
+        <h1>{props.nome}</h1>
+        <p>{props.descricao}</p>
       </div>
     </div>
   );

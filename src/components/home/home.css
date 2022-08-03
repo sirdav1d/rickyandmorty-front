@@ -1,7 +1,18 @@
 .Home {
   position: relative;
-  background: var(--black);
+  background-image: url(https://wallpaperaccess.com/full/2495387.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.43);
   min-height: 100vh;
   color: var(--white);
   overflow: hidden;
+}
+
+@media screen and (max-width: 720px) {
+  .Home {
+    background-image: url(https://wallpapercave.com/wp/wp6591113.jpg);
+  }
 }

@@ -16,7 +16,7 @@ function Navbar() {
         </div>
 
         <a href="/" rel="noopener noreferrer">
-          Criar Personagem
+          CRIAR PERSONAGEM
         </a>
 
       </div>
