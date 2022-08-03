@@ -1,10 +1,10 @@
-.Footer{
-    background-color: var(--white);
-    position: fixed;
-    bottom: 0;
-    color: var(--black);
-    width: 100%;
-    text-align: center;
-    font-size: .8rem;
-    padding: 5px;
+.Footer {
+  background-color: rgba(123, 124, 124, 0.51);
+  position: fixed;
+  bottom: 0;
+  color: var(--white);
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 8px 0;
 }

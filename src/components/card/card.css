@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--black);
+  margin: 24px auto;
+  width: 320px;
+  height: 120px;
+  box-shadow: 4px 4px 8px var(--black);
+}
+
+.cardImg img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.cardContent {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.cardContent h1 {
+  font-size: 1.2rem;
+  margin-top: 16px;
+}
+
+.cardContent p {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  padding: 0 16px;
+}
