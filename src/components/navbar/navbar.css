@@ -1,25 +1,28 @@
+
 .Navbar {
   background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(245, 245, 245, 0.2);
   backdrop-filter: blur(5px);
   height: auto;
-  padding: 12px 4px;
+  padding: 12px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   overflow-x: hidden;
-  box-shadow: 0px 2px 8px var(--black);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.422);
 }
 
 .navTitle {
   text-decoration: none;
   list-style: none;
   color: rgba(54, 253, 253, 0.948);
-  font-weight: bolder;
-  font-size: 2.2rem;
-  animation: textShadowAnimation 2s  infinite alternate;
+  font-weight: 900;
+  font-size: 2.5rem;
+  animation: textShadowAnimation 3s ease infinite alternate;
   margin-top: 16px;
+ 
+
 }
 
 @keyframes textShadowAnimation {
@@ -27,7 +30,7 @@
     text-shadow: 4px 4px 4px rgb(0, 230, 96);
   }
   to {
-    text-shadow: 4px 4px 16px rgb(0, 230, 96);
+    text-shadow: 8px 8px 6px rgb(0, 230, 96);
   }
 }
 
@@ -42,7 +45,7 @@
   justify-content: space-around;
   align-items: flex-end;
   list-style: none;
-  margin: 24px 4px;
+  margin: 16px 4px;
   width: 100%;
 }
 
@@ -50,11 +53,11 @@
   text-decoration: none;
   color: var(--black);
   font-size: 1.4rem;
-  padding: 8px;
+  padding: 8px 16px;
   font-weight: 900;
   background-color: rgb(0, 255, 106);
-  border-radius: 4px;
-  box-shadow: 4px 4px 8px var(--black);
+  border-radius: 20px;
+  box-shadow: 4px 4px 2px var(--black);
 }
 
 .nav-body a:hover {
@@ -73,9 +76,9 @@
 }
 
 .navFind input {
-  padding: 4px;
-  border-radius: 4px;
-  width: 300px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  width: 324px;
   outline: none;
   border: none;
   font-size: 1rem;
@@ -92,12 +95,13 @@
   }
   .nav-body a {
     font-size: 0.8rem;
+    padding: 8px 12px;
   }
   .navFind label {
     font-size: 0.8rem;
   }
   .navFind input {
-    width: 160px;
+    width: 170px;
     font-size: 0.8rem;
   }
 }

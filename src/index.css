@@ -2,16 +2,14 @@
 
 :root {
   --black: #262626;
-  --white: #f6f6f6
+  --white: #f6f6f6;
 }
-
-
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Comic Neue', cursive;;
+  font-family: 'Comic Neue', cursive;
   scroll-behavior: smooth;
 }
 

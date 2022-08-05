@@ -1,5 +1,7 @@
 .CardList_container {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  
+  
 }
 
 .CardList {
@@ -9,5 +11,5 @@
   align-items: center;
   justify-content: space-around;
   padding: 0 140px;
-  margin-bottom: 16px;
+  margin-bottom: 48px;
 }
