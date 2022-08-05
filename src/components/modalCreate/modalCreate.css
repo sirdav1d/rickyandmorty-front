@@ -1,0 +1,79 @@
+.modalCreate {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  overflow: hidden;
+  background-image: url(https://wallpaperaccess.com/full/2495387.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overscroll-behavior-y: 1px;
+}
+
+@media screen and (max-width: 720px) {
+  .modalCreate {
+    background-image: url(.././../assets/img-ram/bg-ram-cell2.jpg);
+  }
+}
+
+.formCreate {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 360px;
+  height: 360px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.formCreate label {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.formCreate input {
+  margin-bottom: 24px;
+  padding: 8px;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+}
+
+#descricao {
+  margin-bottom: 24px;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px;
+  border: none;
+}
+
+.btnGroup {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.btnForm {
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1.2rem;
+  margin: 0 8px;
+  width: 50%;
+  padding: 8px;
+  font-weight: 900;
+  border-radius: 20px;
+  box-shadow: 4px 4px 2px var(--black);
+  border: none;
+  cursor: pointer;
+}
+
+.create {
+  background-color: rgb(0, 255, 106);
+}
+
+.back {
+  background-color: rgb(255, 55, 138);
+}

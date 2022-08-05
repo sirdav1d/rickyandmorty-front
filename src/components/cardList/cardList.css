@@ -1,10 +1,10 @@
-.CardList_container {
+.cardList_container {
   margin-bottom: 4px;
   
   
 }
 
-.CardList {
+.cardList {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
