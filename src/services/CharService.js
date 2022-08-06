@@ -2,8 +2,6 @@ import { Api } from 'helpers/Api';
 
 const parseResponse = (response) => response.json();
 
-
-
 export const CharService = {
   getAll: () => fetch(Api.charList(), { method: 'GET' }).then(parseResponse),
 

@@ -11,9 +11,34 @@
   overscroll-behavior-y: 1px;
 }
 
+.modalClose{
+  font-size: 2em;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  color: white;
+  transform: rotate(45deg);
+  transition: all 1s;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+}
+
+.modalClose:hover{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 @media screen and (max-width: 720px) {
   .modalCreate {
-    background-image: url(.././../assets/img-ram/bg-ram-cell2.jpg);
+    background-image: url(https://pbs.twimg.com/media/FZYaXDlWYAEP7tu?format=jpg&name=medium);
   }
 }
 

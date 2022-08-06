@@ -1,35 +1,48 @@
 import './modalCreate.css';
+import Overlay from 'components/overlay/Overlay';
+// import { useState } from 'react';
+function ModalCreate({ closeModal }) {
+  const handleClick = (e, canClose) => {
+    e.stopPropagation();
+    if (canClose) {
+      closeModal();
+    }
+  };
 
-function ModalCreate() {
   return (
-        <div className="modalCreate">
-      <form action="POST" method="post" className="formCreate">
-        <label htmlFor="nome">Nome</label>
-        <input type="text" name="nome" id="nome" required="required" />
+    <Overlay overlayClick={closeModal}>
+      <div className="modalCreate" onClick={handleClick()}>
+        <span className="modalClose" onClick={(e) => handleClick(e, true)}>
+          +
+        </span>
 
-        <label htmlFor="descricao">Descrição</label>
-        <textarea
-          type="text"
-          name="descricao"
-          id="descricao"
-          required="required"
-          rows={4}
-        />
+        <form action="POST" method="post" className="formCreate">
 
-        <label htmlFor="foto">Foto</label>
-        <input type="text" name="foto" id="foto" required="required" />
+          <label htmlFor="nome">Nome</label>
+          <input type="text" name="nome" id="nome" required="required" />
 
-        <div className='btnGroup'>
-          <button type="submit" className="btnForm create">
-            CRIAR
-          </button>
+          <label htmlFor="descricao">Descrição</label>
+          <textarea
+            type="text"
+            name="descricao"
+            id="descricao"
+            required="required"
+            rows={4}
+          />
 
-          <button className="btnForm back">
-            VOLTAR
-          </button>
-        </div>
-      </form>
-    </div>
+          <label htmlFor="foto">Foto</label>
+          <input type="text" name="foto" id="foto" required="required" />
+
+          <div className="btnGroup">
+            <button type="submit" className="btnForm create">
+              CRIAR
+            </button>
+
+            <button className="btnForm back">VOLTAR</button>
+          </div>
+        </form>
+      </div>
+    </Overlay>
   );
 }
 

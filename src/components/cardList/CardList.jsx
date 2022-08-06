@@ -12,10 +12,13 @@ function CardList() {
     
   };
 
+   
+
   useEffect(() => {
     getlist();
     
   }, []);
+
 
 
   return (
