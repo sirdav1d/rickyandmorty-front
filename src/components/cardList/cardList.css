@@ -1,9 +1,3 @@
-.cardList_container {
-  margin-bottom: 4px;
-  
-  
-}
-
 .cardList {
   display: flex;
   flex-direction: row;
