@@ -3,7 +3,7 @@ const CharContext = {
 
   charList: () => `${CharContext.ramEndpoint()}/all-characters`,
   charById: (id) => `${CharContext.ramEndpoint()}/find-character/${id}`,
-  charCreate: () => `${CharContext.ramEndpoint()}/create`,
+  charCreate: () => `${CharContext.ramEndpoint()}/create/`,
   charUpdateById: (id) => `${CharContext.ramEndpoint()}/update/${id}`,
   charDeleteById: (id) => `${CharContext.ramEndpoint()}/delete/${id}`,
 };

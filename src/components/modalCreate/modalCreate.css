@@ -1,62 +1,26 @@
-.modalCreate {
-  height: 100vh;
+.ModalCreate{
   width: 100%;
-  position: fixed;
-  top: 0;
+  height: 100%;
   display: flex;
-  overflow: hidden;
-  background-image: url(https://wallpaperaccess.com/full/2495387.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  overscroll-behavior-y: 1px;
-}
-
-.modalClose{
-  font-size: 2em;
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 50%;
-  color: white;
-  transform: rotate(45deg);
-  transition: all 1s;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  align-items: center;
 
 }
 
-.modalClose:hover{
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-@media screen and (max-width: 720px) {
-  .modalCreate {
-    background-image: url(https://pbs.twimg.com/media/FZYaXDlWYAEP7tu?format=jpg&name=medium);
-  }
-}
 
 .formCreate {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 360px;
-  height: 360px;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(4px);
+ 
+}
+
+.formCreate div{
+  display: flex;
+  flex-direction: column;
+ 
 }
 
 .formCreate label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 4px;
 }
 
@@ -79,6 +43,7 @@
 .btnGroup {
   display: flex;
   flex-direction: row-reverse;
+  width: 100%;
 }
 
 .btnForm {
@@ -86,19 +51,33 @@
   color: var(--black);
   font-size: 1.2rem;
   margin: 0 8px;
-  width: 50%;
+  width: 45%;
   padding: 8px;
   font-weight: 900;
   border-radius: 20px;
   box-shadow: 4px 4px 2px var(--black);
   border: none;
   cursor: pointer;
+ 
 }
 
+.btnForm:hover {
+  animation: btnAnimation 0.8s ease-out alternate infinite;
+}
+
+.btnForm:disabled{
+  background-color: rgb(141, 141, 141);
+}
 .create {
   background-color: rgb(0, 255, 106);
 }
 
 .back {
   background-color: rgb(255, 55, 138);
+}
+
+@keyframes btnAnimation {
+  to {
+    transform: scale(1.1);
+  }
 }

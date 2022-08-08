@@ -1,21 +1,6 @@
-// import ModalCreate from 'components/modalCreate/ModalCreate';
 import './navbar.css';
-// import { useState, useEffect } from 'react';
-// import { CharService } from 'services/CharService';
 
-function Navbar({create}) {
-  // const [characters, setCharacters] = useState([]);
-
-  // const getCharById = async (id) => {
-  //   const response = await CharService.getById(id);
-  //   setCharacters(response);
-  // };
-
-  // useEffect(() => {
-  //   getCharById();
-  // }, []);
-
-
+function Navbar({ create }) {
   return (
     <div className="Navbar">
       <a className="navTitle" href="/" rel="noopener noreferrer">
@@ -24,7 +9,6 @@ function Navbar({create}) {
 
       <div className="nav-body">
         <div className="navFind">
-          
           <input type="text" placeholder="Procurar por ID" />
           <button type="submit">
             <img
@@ -35,7 +19,9 @@ function Navbar({create}) {
           </button>
         </div>
 
-        <button type="button" onClick={()=>create()} className="btnCreate">CRIAR PERSONAGEM</button>
+        <button type="button" onClick={() => create()} className="btnCreate">
+          ADD PERSONAGEM
+        </button>
       </div>
     </div>
   );

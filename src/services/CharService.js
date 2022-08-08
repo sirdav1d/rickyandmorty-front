@@ -8,7 +8,15 @@ export const CharService = {
   getById: (id) =>
     fetch(Api.charById(id), { method: 'GET' }).then(parseResponse),
 
-  create: () => fetch(Api.charCreate(), { method: 'POST' }).then(parseResponse),
+  create: (character) =>
+    fetch(Api.charCreate(), {
+      method: 'POST',
+      body: JSON.stringify(character),
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(parseResponse),
 
   upById: (id) =>
     fetch(Api.charUpdateById(id), { method: 'UPDATE' }).then(parseResponse),
