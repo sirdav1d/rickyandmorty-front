@@ -37,7 +37,7 @@ function Home() {
           onFind={charFound}
         ></ModalById>
       )}
-      
+
       <Footer />
     </div>
   );

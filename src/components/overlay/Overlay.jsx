@@ -1,5 +1,4 @@
-import "./overlay.css"
-
+import './overlay.css';
 
 function Overlay({ children, overlayClick }) {
   return (

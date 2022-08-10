@@ -15,30 +15,21 @@ const ModalById = ({ closeModal, onFind }) => {
     getById(onFind);
   }, [onFind]);
 
+  const { nome, descricao, foto } = findState;
 
-  const {nome, descricao, foto} = findState
-
-
-  console.log(nome)
+  console.log(nome);
   return (
-
-    <ModalGen closeModal={closeModal}>
+    <ModalGen className="modalGen" closeModal={closeModal}>
       <div className="ModalById">
-     
-            <Card
-              nome={nome}
-            descricao={descricao}
-            foto={foto}
-            key={`Char - ${findState.length}`}
-            ></Card>
-
+        <Card
+          nome={nome}
+          descricao={descricao}
+          foto={foto}
+          key={`Char - ${findState.length}`}
+        ></Card>
       </div>
     </ModalGen>
-
-   
   );
-
-  
 };
 
 export default ModalById;

@@ -2,8 +2,6 @@ import './navbar.css';
 import { useState } from 'react';
 import { CharService } from 'services/CharService';
 function Navbar({ create, findById }) {
-
-
   const [inputId, setInputId] = useState('');
 
   const getById = async (inputId) => {

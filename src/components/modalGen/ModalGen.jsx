@@ -3,7 +3,6 @@ import Overlay from 'components/overlay/Overlay';
 import React from 'react';
 
 function ModalGen({ children, closeModal }) {
-
   const handleclick = (e, canClose) => {
     e.stopPropagation();
     if (canClose) {
