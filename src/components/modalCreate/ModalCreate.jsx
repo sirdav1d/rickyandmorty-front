@@ -17,7 +17,7 @@ function ModalCreate({ closeModal, onCreate }) {
 
   const [disable, setDisable] = useState(true);
 
-  const formDisabel = () => {
+  const formDisable = () => {
     const response = !Boolean(
       createState.nome.length &&
         createState.descricao.length &&
@@ -27,7 +27,7 @@ function ModalCreate({ closeModal, onCreate }) {
   };
 
   useEffect(() => {
-    formDisabel();
+    formDisable();
   });
 
   const createChar = async () => {
@@ -38,6 +38,7 @@ function ModalCreate({ closeModal, onCreate }) {
       descricao: descricao,
       foto: `./assets/img-ram/${renamePic}`,
     };
+
     const response = await CharService.create(character);
     onCreate(response);
     closeModal();

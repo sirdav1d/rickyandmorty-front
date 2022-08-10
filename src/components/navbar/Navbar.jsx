@@ -10,7 +10,7 @@ function Navbar({ create }) {
       <div className="nav-body">
         <div className="navFind">
           <input type="text" placeholder="Procurar por ID" />
-          <button type="submit">
+          <button type="button">
             <img
               className="lupa"
               src="https://pbs.twimg.com/media/FZYaXDlXgAEo8L5?format=png&name=360x360"

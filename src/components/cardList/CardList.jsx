@@ -11,37 +11,32 @@ function CardList({ newChar }) {
     setCharacters(response);
   };
 
+
+  const addNewChar = (character) => {
+    const list = [...characters, character];
+    setCharacters(list);
+  };
+
   useEffect(() => {
-    getlist();
-  }, []);
-
-
-
-  useEffect(() => {
-    if (newChar) {
-      const addNewChar = (newChar) => {
-        const list = [...characters, newChar];
-        setCharacters(list);
-      };
+    if (!newChar) {
+      getlist();
+    } else {
       addNewChar(newChar);
+      getlist();
     }
   }, [newChar]);
 
-  console.log(newChar)
-
+  console.log('render');
   return (
     <div className="cardList">
-      {characters.map(
-        (char, index) =>
-          (
-            <Card
-              nome={char.nome}
-              descricao={char.descricao}
-              foto={char.foto}
-              key={`Char - ${index}`}
-            />
-          ),
-      )}
+      {characters.map((char, index) => (
+        <Card
+          nome={char.nome}
+          descricao={char.descricao}
+          foto={char.foto}
+          key={`Char - ${index}`}
+        />
+      ))}
     </div>
   );
 }
