@@ -1,4 +1,3 @@
-import './modalById.css';
 import ModalGen from 'components/modalGen/ModalGen';
 import Card from 'components/card/Card';
 import { useState, useEffect } from 'react';
