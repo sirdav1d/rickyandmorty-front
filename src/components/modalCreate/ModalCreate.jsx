@@ -56,7 +56,7 @@ function ModalCreate({ closeModal, onCreate }) {
               id="nome"
               onChange={(e) => handleChange(e, 'nome')}
               required
-              placeholder="Nome do Personagem"
+              placeholder="Teste Create Nome"
               value={createState.nome}
             />
           </div>
@@ -68,9 +68,9 @@ function ModalCreate({ closeModal, onCreate }) {
               name="descricao"
               id="descricao"
               required
-              rows={4}
+              rows={3}
               onChange={(e) => handleChange(e, 'descricao')}
-              placeholder="Detalhe o personagem"
+              placeholder="Teste Create Descrição"
               value={createState.descricao}
             />
           </div>
