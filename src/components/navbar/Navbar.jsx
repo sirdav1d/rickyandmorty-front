@@ -19,7 +19,7 @@ function Navbar({ create, findById }) {
         <div className="navFind">
           <input
             type="text"
-            placeholder="Procurar por ID"
+            placeholder="62c4dac270d29daff34c050b"
             onChange={(e) => setInputId(e.target.value)}
             value={inputId}
           />
