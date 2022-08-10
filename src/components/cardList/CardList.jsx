@@ -13,9 +13,12 @@ function CardList({ newChar }) {
 
 
   const addNewChar = (character) => {
-    const list = [...characters, character];
-    setCharacters(list);
+    if (character) {
+      const list = [...characters, character];
+      setCharacters(list);
+    }
   };
+
 
   useEffect(() => {
     if (!newChar) {
@@ -27,18 +30,22 @@ function CardList({ newChar }) {
   }, [newChar]);
 
   console.log('render');
-  return (
-    <div className="cardList">
-      {characters.map((char, index) => (
-        <Card
-          nome={char.nome}
-          descricao={char.descricao}
-          foto={char.foto}
-          key={`Char - ${index}`}
-        />
-      ))}
-    </div>
-  );
-}
+
+
+    return (
+      <div className="cardList">
+        {characters.map((char, index) => (
+          <Card
+            nome={char.nome}
+            descricao={char.descricao}
+            foto={char.foto}
+            key={`Char - ${index}`}
+          />
+        ))}
+      </div>
+    );
+  }
+ 
+
 
 export default CardList;

@@ -5,7 +5,7 @@
   background-color: var(--white);
   color: var(--black);
   margin: 24px 16px 0;
-  width: 320px;
+  width: 320px !important;
   height: 120px;
   box-shadow: 4px 4px 8px var(--black);
 }
@@ -29,4 +29,11 @@
   font-size: 0.8rem;
   margin-top: 4px;
   padding: 0 12px;
+}
+
+@media screen and (max-width:720px) {
+  .card{
+    margin: 24px 0px 0;
+    padding: 0;
+  }
 }

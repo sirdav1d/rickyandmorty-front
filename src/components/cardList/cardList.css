@@ -7,3 +7,9 @@
   padding: 0 68px;
   margin-bottom: 48px;
 }
+
+@media screen and (max-width:720px) {
+  .cardList{
+    padding: 0;
+  }
+}
