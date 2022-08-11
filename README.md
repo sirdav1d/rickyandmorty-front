@@ -1,6 +1,6 @@
 # MOD4-PROJETO01 - RICK AND MORTY REACT.JS
 
-## DEPLOY HEROKU <https://react-rickandmorty.herokuapp.com/>
+## DEPLOY HEROKU --> <https://react-rickandmorty.herokuapp.com/>
 
 ### Critérios de Avaliação (10 pontos)
 
