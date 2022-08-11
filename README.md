@@ -14,7 +14,7 @@ Implementação JSON Server (0,8 pontos);<br/>
 
 #
 
-#### Frontend React com os recursos:
+### Frontend React com os recursos:
 
 Read All (2 pontos);<br/>
 Read By Id (2 pontos);<br/>
@@ -23,7 +23,7 @@ Create (2 pontos).<br/>
 
 #
 
-#### 1ª Entrega
+### 1ª Entrega
 O projeto deve ser entregue até a terça-feira da 3º semana de aula, envie o link do GitHub na atividade no Moodle.<br/>
 O prazo máximo é quarta-feira da 3º semana de aula, valendo 70% da nota.
 #
