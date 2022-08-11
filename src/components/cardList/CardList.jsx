@@ -25,9 +25,8 @@ function CardList({ newChar }) {
       addNewChar(newChar);
       getlist();
     }
+  // eslint-disable-next-line
   }, [newChar]);
-
-  console.log('render');
 
   return (
     <div className="cardList">
