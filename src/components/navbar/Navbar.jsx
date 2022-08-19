@@ -23,19 +23,40 @@ function Navbar({ create, findById }) {
             onChange={(e) => setInputId(e.target.value)}
             value={inputId}
           />
-          <button type="button">
+          <button type="button" className="btnGen">
             <img
-              className="lupa"
-              src="https://pbs.twimg.com/media/FZYaXDlXgAEo8L5?format=png&name=360x360"
+              className="btnGen-find"
+              src={'assets/img-ram/lupa.png'}
               alt="lupa"
               onClick={() => getById(inputId)}
             />
           </button>
         </div>
+        <div className="containerBtnGen">
+          <button type="button" onClick={() => create()} className="btnGen">
+            <img
+              className="btnGen-add"
+              src={'./assets/img-ram/adicao.png'}
+              alt="Adicionar"
+            />
+          </button>
 
-        <button type="button" onClick={() => create()} className="btnCreate">
-          ADD PERSONAGEM
-        </button>
+          <button type="button" onClick={() => create()} className="btnGen">
+            <img
+              className="btnGen-edit"
+              src={'./assets/img-ram/editar.png'}
+              alt="Adicionar"
+            />
+          </button>
+
+          <button type="button" onClick={() => create()} className="btnGen">
+            <img
+              className="btnGen-del"
+              src={'./assets/img-ram/excluir.png'}
+              alt="Adicionar"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
