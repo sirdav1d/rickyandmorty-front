@@ -1,12 +1,33 @@
+import { ActionMode } from 'constants';
 import './card.css';
 
 function Card(props) {
+
+  const badgeAction = (canRender) =>{
+    if(canRender){
+      return(
+        <span className='cardTag'>
+          {props.mode}
+        </span>
+      )
+    }
+  }
+
   return (
-    <div className="card">
-      <div className="cardImg">
+    <div
+      className={`card ${props.mode !== ActionMode.NORMAL && 'cardDisable'}`}
+    >
+      <div
+        className={`cardImg ${props.mode !== ActionMode.NORMAL &&
+          'cardImgDisable'} `}
+      >
         <img src={props.foto} alt={props.nome} />
       </div>
-      <div className="cardContent">
+      {badgeAction(props.mode !== ActionMode.NORMAL)}
+      <div
+        className={`cardContent ${props.mode !== ActionMode.NORMAL &&
+          'cardContentDisable'} `}
+      >
         <h1>{props.nome}</h1>
         <p>{props.descricao}</p>
       </div>

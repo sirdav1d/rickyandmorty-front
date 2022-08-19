@@ -1,8 +1,8 @@
-import './modalCreate.css';
+import './modalCreateEdit.css';
 import { useState, useEffect } from 'react';
 import ModalGen from 'components/modalGen/ModalGen';
 import { CharService } from 'services/CharService';
-function ModalCreate({ closeModal, onCreate }) {
+function ModalCreateEdit({ closeModal, onCreate }) {
   const form = {
     nome: '',
     descricao: '',
@@ -111,4 +111,4 @@ function ModalCreate({ closeModal, onCreate }) {
   );
 }
 
-export default ModalCreate;
+export default ModalCreateEdit;

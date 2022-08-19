@@ -61,8 +61,18 @@
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
   margin: 0 4px;
+}
+
+.btnActive {
+  transform: scale(1.2);
+  background-color: rgb(255, 44, 178);
+
+  opacity: 1;
+}
+.btnActive:hover {
+  animation: none;
 }
 
 .btnGen:hover {
@@ -91,8 +101,6 @@
   color: var(--black);
 }
 
-
-
 @media screen and (max-width: 720px) {
   .navTitle {
     font-size: 1.8rem;
@@ -111,8 +119,10 @@
     width: 170px;
     font-size: 0.8rem;
   }
-  .btnGen {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+  .containerBtnGen {
+    width: 120px;
+  }
+  .btnGen img {
+    width: 14px;
   }
 }

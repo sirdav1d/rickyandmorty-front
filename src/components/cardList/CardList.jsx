@@ -3,7 +3,7 @@ import Card from 'components/card/Card';
 import './cardList.css';
 import { CharService } from 'services/CharService';
 
-function CardList({ newChar }) {
+function CardList({ newChar, mode }) {
   const [characters, setCharacters] = useState([]);
 
   const getlist = async () => {
@@ -25,13 +25,14 @@ function CardList({ newChar }) {
       addNewChar(newChar);
       getlist();
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [newChar]);
 
   return (
     <div className="cardList">
       {characters.map((char, index) => (
         <Card
+          mode={mode}
           nome={char.nome}
           descricao={char.descricao}
           foto={char.foto}

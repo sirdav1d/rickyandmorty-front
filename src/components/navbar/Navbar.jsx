@@ -1,7 +1,8 @@
+import { ActionMode } from 'constants';
 import './navbar.css';
 import { useState } from 'react';
 import { CharService } from 'services/CharService';
-function Navbar({ create, findById }) {
+function Navbar({ create, findById, updateChar, mode }) {
   const [inputId, setInputId] = useState('');
 
   const getById = async (inputId) => {
@@ -22,6 +23,7 @@ function Navbar({ create, findById }) {
             placeholder="62c4dac270d29daff34c050b"
             onChange={(e) => setInputId(e.target.value)}
             value={inputId}
+            required="required"
           />
           <button type="button" className="btnGen">
             <img
@@ -32,6 +34,7 @@ function Navbar({ create, findById }) {
             />
           </button>
         </div>
+
         <div className="containerBtnGen">
           <button type="button" onClick={() => create()} className="btnGen">
             <img
@@ -41,7 +44,7 @@ function Navbar({ create, findById }) {
             />
           </button>
 
-          <button type="button" onClick={() => create()} className="btnGen">
+          <button type="button" onClick={() => updateChar()} className={`btnGen ${mode === ActionMode.ATUALIZAR && "btnActive"}`}>
             <img
               className="btnGen-edit"
               src={'./assets/img-ram/editar.png'}

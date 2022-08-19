@@ -8,6 +8,7 @@
   width: 320px !important;
   height: 120px;
   box-shadow: 4px 4px 8px var(--black);
+  transition: all 0.4s ease;
 }
 
 .cardImg img {
@@ -36,4 +37,29 @@
     margin: 24px 8px 0;
     padding: 0;
   }
+}
+
+.cardDisable {
+  box-shadow: 0px 0px 7px rgb(255, 44, 178);
+}
+
+.cardContentDisable {
+  color: gray;
+}
+
+
+.cardImgDisable img {
+  filter: grayscale(100%);
+}
+
+.cardTag {
+  background-color:  rgb(255, 44, 178) !important;
+  color: white !important;
+  position: absolute;
+  font-size: 0.6em;
+  border-radius: 8px;
+  padding: 6px;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  margin: -10px;
 }

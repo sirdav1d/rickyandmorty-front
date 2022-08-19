@@ -1,16 +1,23 @@
+import { ActionMode } from 'constants';
 import './home.css';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import CardList from 'components/cardList/CardList';
-import ModalCreate from 'components/modalCreate/ModalCreate';
+import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
 import ModalById from 'components/modalById/ModalById';
 import { useState } from 'react';
 
 function Home() {
+  const [modoAtual, setModoAtual] = useState(ActionMode.NORMAL);
   const [showModalCreated, setshowModalCreated] = useState(false);
   const [showModalById, setshowModalById] = useState(false);
   const [charFound, setCharFound] = useState('');
   const [charCreated, setCharCreated] = useState([]);
+
+  const handleActions = (action) => {
+    const newAction = modoAtual === action ? ActionMode.NORMAL : action;
+    setModoAtual(newAction);
+  };
 
   return (
     <div className="Home">
@@ -20,16 +27,20 @@ function Home() {
           setCharFound(character);
           setshowModalById(true);
         }}
+        updateChar ={()=>handleActions(ActionMode.ATUALIZAR)}
+        mode={modoAtual}
       ></Navbar>
 
       {showModalCreated && (
-        <ModalCreate
+        <ModalCreateEdit
           closeModal={() => setshowModalCreated(false)}
           onCreate={(newChar) => setCharCreated(newChar)}
         />
       )}
 
-      <CardList newChar={charCreated} />
+      <CardList 
+      mode={modoAtual}
+      newChar={charCreated} />
 
       {showModalById && (
         <ModalById
