@@ -1,32 +1,50 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { ActionMode } from 'constants';
 import Card from 'components/card/Card';
 import './cardList.css';
 import { CharService } from 'services/CharService';
+import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
 
-function CardList({ newChar, mode }) {
+function CardList({ newChar, mode, editChar, deleteChar }) {
   const [characters, setCharacters] = useState([]);
 
-  const getlist = async () => {
+  const [charModal, setCharModal] = useState(false)
+
+  const getList = async () => {
     const response = await CharService.getAll();
     setCharacters(response);
   };
 
-  const addNewChar = (character) => {
-    if (character) {
-      const list = [...characters, character];
+  const addNewChar = useCallback(
+    (newChar) => {
+      const list = [...characters, newChar];
       setCharacters(list);
-    }
-  };
+    },
+    [characters],
+  );
 
   useEffect(() => {
-    if (!newChar) {
-      getlist();
-    } else {
+    if (newChar && !characters.map(({ id }) => id).includes(newChar.id)) {
       addNewChar(newChar);
-      getlist();
     }
-    // eslint-disable-next-line
-  }, [newChar]);
+  }, [addNewChar, newChar, characters]);
+
+  useEffect(() => {
+    getList();
+  }, [addNewChar, newChar, characters]);
+
+
+   const getById = async (id) => {
+     const response = await CharService.getById(id);
+
+     const mapper = {
+       [ActionMode.NORMAL]: () => setCharModal(response),
+       [ActionMode.ATUALIZAR]: () => editChar(response),
+       [ActionMode.DELETAR]: () => deleteChar(response),
+     };
+
+     mapper[mode]();
+   };
 
   return (
     <div className="cardList">
@@ -37,8 +55,15 @@ function CardList({ newChar, mode }) {
           descricao={char.descricao}
           foto={char.foto}
           key={`Char - ${index}`}
+          clickIten ={(Id) => getById(Id)}
         />
       ))}
+
+      {charModal && (<ModalCreateEdit 
+      onEdit={charModal}
+      closeModal={setCharModal(false)}
+      
+      />)}
     </div>
   );
 }

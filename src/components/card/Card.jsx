@@ -5,13 +5,15 @@ function Card(props) {
 
   const badgeAction = (canRender) =>{
     if(canRender){
-      return(
-        <span className='cardTag'>
+      return (
+        <span className="cardTag" onClick={() => props.clickIten()}>
           {props.mode}
         </span>
-      )
+      );
     }
   }
+
+  
 
   return (
     <div

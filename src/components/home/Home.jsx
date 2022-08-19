@@ -13,10 +13,28 @@ function Home() {
   const [showModalById, setshowModalById] = useState(false);
   const [charFound, setCharFound] = useState('');
   const [charCreated, setCharCreated] = useState([]);
+  const [charToUp, setCharToUp] = useState([]);
+  const [charToDel, setCharToDel] = useState([]);
 
   const handleActions = (action) => {
     const newAction = modoAtual === action ? ActionMode.NORMAL : action;
     setModoAtual(newAction);
+  };
+
+  const handleDel = (charToDelete) => {
+    setCharToDel(charToDelete);
+  };
+
+  const handleUp = (charToUpdate) => {
+    setCharToUp(charToUpdate);
+    setshowModalCreated(true);
+  };
+
+  const handleCloseModal = () => {
+    setshowModalCreated(false);
+    setCharCreated();
+    setCharToDel();
+    setCharToUp();
   };
 
   return (
@@ -27,20 +45,26 @@ function Home() {
           setCharFound(character);
           setshowModalById(true);
         }}
-        updateChar ={()=>handleActions(ActionMode.ATUALIZAR)}
+        updateChar={() => handleActions(ActionMode.ATUALIZAR)}
         mode={modoAtual}
       ></Navbar>
 
       {showModalCreated && (
         <ModalCreateEdit
-          closeModal={() => setshowModalCreated(false)}
+          closeModal={handleCloseModal}
           onCreate={(newChar) => setCharCreated(newChar)}
+          onEdit={charToUp}
+          onDel={charToDel}
+          mode={modoAtual}
         />
       )}
 
-      <CardList 
-      mode={modoAtual}
-      newChar={charCreated} />
+      <CardList
+        mode={modoAtual}
+        newChar={charCreated}
+        deleteChar={handleDel}
+        editChar={handleUp}
+      />
 
       {showModalById && (
         <ModalById

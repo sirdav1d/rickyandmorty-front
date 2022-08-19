@@ -2,7 +2,7 @@ import './modalCreateEdit.css';
 import { useState, useEffect } from 'react';
 import ModalGen from 'components/modalGen/ModalGen';
 import { CharService } from 'services/CharService';
-function ModalCreateEdit({ closeModal, onCreate }) {
+function ModalCreateEdit({ closeModal, onCreate, onEdit, onDel, mode }) {
   const form = {
     nome: '',
     descricao: '',
