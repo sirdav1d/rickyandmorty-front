@@ -25,11 +25,16 @@ export const CharService = {
              body: JSON.stringify(character),
              mode: 'cors',
              headers: {
-"Content-Type": "application/json",}
+               'Content-Type': 'application/json',
+             },
            }).then(parseResponse),
 
          delById: (id) =>
-           fetch(Api.charDeleteById(id), { method: 'DELETE' }).then(
-             parseResponse,
-           ),
+           fetch(Api.charDeleteById(id), {
+             method: 'DELETE',
+             mode: 'cors',
+             headers: {
+               'Content-Type': 'application/json',
+             },
+           }).then(parseResponse),
        };

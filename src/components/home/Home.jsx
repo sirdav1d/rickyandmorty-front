@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ActionMode } from 'constants';
+import DeleteModal from 'components/deleteModal/DeleteModal';
 import './home.css';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
@@ -9,6 +10,8 @@ import ModalById from 'components/modalById/ModalById';
 
 function Home() {
   const [modoAtual, setModoAtual] = useState(ActionMode.NORMAL);
+
+  const [charDel, setCharDel] = useState('');
 
   const [charEdited, setCharEdited] = useState();
 
@@ -38,7 +41,7 @@ function Home() {
   const handleCloseModal = () => {
     setShowModalCreated(false);
     setShowModalById(false);
-    setCharFound()
+    setCharFound();
     setCharCreated();
     setCharToEdit();
     setCharToDel();
@@ -77,9 +80,18 @@ function Home() {
         mode={modoAtual}
         newChar={charCreated}
         charEdited={charEdited}
+        charDel={charDel}
         updateChar={handleUp}
         deleteChar={handleDel}
       />
+
+      {charToDel && (
+        <DeleteModal
+          charToDel={charToDel}
+          closeModal={handleCloseModal}
+          onDel={(charDel) => setCharDel(charDel)}
+        ></DeleteModal>
+      )}
 
       <Footer />
     </div>

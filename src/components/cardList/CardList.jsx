@@ -5,9 +5,16 @@ import './cardList.css';
 import { CharService } from 'services/CharService';
 import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
 
-function CardList({ newChar, mode, updateChar, deleteChar, charEdited }) {
+function CardList({
+  newChar,
+  mode,
+  updateChar,
+  deleteChar,
+  charEdited,
+  charDel,
+}) {
   const [characters, setCharacters] = useState([]);
- 
+
   const [charModal, setCharModal] = useState(false);
 
   const getList = async () => {
@@ -15,10 +22,9 @@ function CardList({ newChar, mode, updateChar, deleteChar, charEdited }) {
     setCharacters(response);
   };
 
-   useEffect(() => {
-     getList();
-   }, [charEdited]);
-
+  useEffect(() => {
+    getList();
+  }, [charEdited, charDel]);
 
   const addNewChar = useCallback(
     (newChar) => {
@@ -37,7 +43,6 @@ function CardList({ newChar, mode, updateChar, deleteChar, charEdited }) {
     }
   }, [addNewChar, newChar, characters]);
 
- 
   const getById = async (id) => {
     const response = await CharService.getById(id);
 
@@ -49,8 +54,8 @@ function CardList({ newChar, mode, updateChar, deleteChar, charEdited }) {
 
     mapper[mode]();
   };
-  
- console.log(newChar);
+
+  console.log(newChar);
 
   return (
     <div className="cardList">
