@@ -1,17 +1,17 @@
+import { CharService } from 'services/CharService';
 import './deleteModal.css';
 import ModalGen from 'components/modalGen/ModalGen';
-import { CharService } from 'services/CharService';
-import React from 'react';
 
 const DeleteModal = ({ closeModal, charToDel, onDel }) => {
 
-  const handleDelete = async (charToDel) => {
-    await CharService.delById(charToDel._id);
-    onDel(charToDel);
+    
+  const handleDelete = async (char) => {
+    await CharService.delById(char._id);
+    onDel(char);
     closeModal();
   };
 
-  console.log(charToDel._id)
+  console.log(charToDel._id);
 
   return (
     <ModalGen closeModal={closeModal}>

@@ -89,7 +89,7 @@ function Home() {
         <DeleteModal
           charToDel={charToDel}
           closeModal={handleCloseModal}
-          onDel={(charDel) => setCharDel(charDel)}
+          onDel={(char) => setCharDel(char)}
         ></DeleteModal>
       )}
 
