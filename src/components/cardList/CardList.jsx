@@ -35,10 +35,7 @@ function CardList({
   );
 
   useEffect(() => {
-    if (
-      newChar &&
-      !characters.map( ({ id }) => id).includes(newChar._id)
-    ) {
+    if (newChar && !characters.map(({ id }) => id).includes(newChar._id)) {
       addNewChar(newChar);
     }
   }, [addNewChar, newChar, characters]);
@@ -54,8 +51,6 @@ function CardList({
 
     mapper[mode]();
   };
-
-  console.log(newChar);
 
   return (
     <div className="cardList">

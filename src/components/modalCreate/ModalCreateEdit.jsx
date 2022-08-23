@@ -51,10 +51,10 @@ function ModalCreateEdit({
     };
 
     const serviceCall = {
-      [ActionMode.NORMAL]: () => CharService.create(character),
+      [ActionMode.NORMAL]: async () => await CharService.create(character),
 
-      [ActionMode.ATUALIZAR]: () =>
-        CharService.upById(charToEdit?._id, character),
+      [ActionMode.ATUALIZAR]: async () =>
+        await CharService.upById(charToEdit?._id, character),
     };
 
     const response = await serviceCall[mode]();
@@ -73,7 +73,7 @@ function ModalCreateEdit({
     };
 
     setCreateState(reset);
-    closeModal();
+    await closeModal();
   };
 
   return (
