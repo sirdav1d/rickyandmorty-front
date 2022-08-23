@@ -3,15 +3,11 @@ import './deleteModal.css';
 import ModalGen from 'components/modalGen/ModalGen';
 
 const DeleteModal = ({ closeModal, charToDel, onDel }) => {
-
-    
   const handleDelete = async (char) => {
     await CharService.delById(char._id);
-    onDel(char);
-    closeModal();
+   await onDel(char);
+   await closeModal();
   };
-
-  console.log(charToDel._id);
 
   return (
     <ModalGen closeModal={closeModal}>
@@ -25,7 +21,7 @@ const DeleteModal = ({ closeModal, charToDel, onDel }) => {
           <button className="btnBack btn" onClick={closeModal}>
             Voltar
           </button>
-          <button className="btnConfirm btn" onClick={handleDelete}>
+          <button className="btnConfirm btn" onClick={handleDelete(charToDel)}>
             Confirmar
           </button>
         </div>

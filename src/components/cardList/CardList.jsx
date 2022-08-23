@@ -37,7 +37,7 @@ function CardList({
   useEffect(() => {
     if (
       newChar &&
-      !characters.map(async ({ id }) => await id).includes(newChar._id)
+      !characters.map( ({ id }) => id).includes(newChar._id)
     ) {
       addNewChar(newChar);
     }
