@@ -1,7 +1,7 @@
 .ModalGen {
   padding: 16px;
   width: 328px;
-  height: 400px;
+  height: 420px;
   background: #26262661;
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
@@ -15,19 +15,18 @@
   font-size: 3.5rem;
   color: rgb(255, 55, 138);
   cursor: pointer;
-  z-index: 9;
   position: absolute;
   transform: rotate(-45deg);
   transition: all 0.5s;
-  right: 20px;
-  top: 0px;
+  right: 8px;
+  top: -16px;
   padding: 4px;
   z-index: 999;
 }
 
 .modalClose:hover {
   font-size: 4.5rem;
-  top: -10px;
+  top: -28px;
 }
 
 .modalBody {

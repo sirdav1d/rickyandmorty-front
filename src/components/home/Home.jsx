@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ActionMode } from 'constants';
 import './home.css';
 import Footer from '../footer/Footer';
@@ -5,73 +6,80 @@ import Navbar from '../navbar/Navbar';
 import CardList from 'components/cardList/CardList';
 import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
 import ModalById from 'components/modalById/ModalById';
-import { useState } from 'react';
 
 function Home() {
   const [modoAtual, setModoAtual] = useState(ActionMode.NORMAL);
-  const [showModalCreated, setshowModalCreated] = useState(false);
-  const [showModalById, setshowModalById] = useState(false);
+
+  const [charEdited, setCharEdited] = useState();
+
+  const [showModalCreated, setShowModalCreated] = useState(false);
+  const [charCreated, setCharCreated] = useState();
+
+  const [showModalById, setShowModalById] = useState(false);
   const [charFound, setCharFound] = useState('');
-  const [charCreated, setCharCreated] = useState([]);
-  const [charToUp, setCharToUp] = useState([]);
-  const [charToDel, setCharToDel] = useState([]);
 
   const handleActions = (action) => {
     const newAction = modoAtual === action ? ActionMode.NORMAL : action;
     setModoAtual(newAction);
   };
 
-  const handleDel = (charToDelete) => {
-    setCharToDel(charToDelete);
-  };
+  const [charToEdit, setCharToEdit] = useState('');
+  const [charToDel, setCharToDel] = useState('');
 
   const handleUp = (charToUpdate) => {
-    setCharToUp(charToUpdate);
-    setshowModalCreated(true);
+    setCharToEdit(charToUpdate);
+    setShowModalCreated(true);
+  };
+
+  const handleDel = (charToDel) => {
+    setCharToDel(charToDel);
   };
 
   const handleCloseModal = () => {
-    setshowModalCreated(false);
+    setShowModalCreated(false);
+    setShowModalById(false);
+    setCharFound()
     setCharCreated();
+    setCharToEdit();
     setCharToDel();
-    setCharToUp();
+    setModoAtual(ActionMode.NORMAL);
   };
 
   return (
     <div className="Home">
       <Navbar
-        create={() => setshowModalCreated(true)}
+        mode={modoAtual}
+        create={() => setShowModalCreated(true)}
+        update={() => handleActions(ActionMode.ATUALIZAR)}
+        deleta={() => handleActions(ActionMode.DELETAR)}
         findById={(character) => {
           setCharFound(character);
-          setshowModalById(true);
+          setShowModalById(true);
         }}
-        updateChar={() => handleActions(ActionMode.ATUALIZAR)}
-        mode={modoAtual}
       ></Navbar>
+
+      {showModalById && (
+        <ModalById onFind={charFound} closeModal={handleCloseModal}></ModalById>
+      )}
 
       {showModalCreated && (
         <ModalCreateEdit
-          closeModal={handleCloseModal}
-          onCreate={(newChar) => setCharCreated(newChar)}
-          onEdit={charToUp}
-          onDel={charToDel}
           mode={modoAtual}
+          closeModal={handleCloseModal}
+          charToEdit={charToEdit}
+          onDel={charToDel}
+          onCreate={(newChar) => setCharCreated(newChar)}
+          onEdit={(editChar) => setCharEdited(editChar)}
         />
       )}
 
       <CardList
         mode={modoAtual}
         newChar={charCreated}
+        charEdited={charEdited}
+        updateChar={handleUp}
         deleteChar={handleDel}
-        editChar={handleUp}
       />
-
-      {showModalById && (
-        <ModalById
-          closeModal={() => setshowModalById(false)}
-          onFind={charFound}
-        ></ModalById>
-      )}
 
       <Footer />
     </div>

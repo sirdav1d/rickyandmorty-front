@@ -1,12 +1,21 @@
+import { ActionMode } from 'constants';
 import './modalCreateEdit.css';
 import { useState, useEffect } from 'react';
 import ModalGen from 'components/modalGen/ModalGen';
 import { CharService } from 'services/CharService';
-function ModalCreateEdit({ closeModal, onCreate, onEdit, onDel, mode }) {
+function ModalCreateEdit({
+  closeModal,
+  onCreate,
+  charToEdit,
+  onEdit,
+  charToDel,
+  onDel,
+  mode,
+}) {
   const form = {
-    nome: '',
-    descricao: '',
-    foto: '',
+    nome: charToEdit?.nome ?? '',
+    descricao: charToEdit?.descricao ?? '',
+    foto: charToEdit?.foto ?? '',
   };
 
   const [createState, setCreateState] = useState(form);
@@ -30,17 +39,40 @@ function ModalCreateEdit({ closeModal, onCreate, onEdit, onDel, mode }) {
     formDisable();
   });
 
-  const createChar = async () => {
+  const handleSend = async () => {
     const { nome, descricao, foto } = createState;
-    const renamePic = foto.split('\\').pop();
+    const renamePic = foto.split(/\\|\//).pop();
+
     const character = {
+      ...(charToEdit && { _id: charToEdit?._id }),
       nome: nome,
       descricao: descricao,
       foto: `./assets/img-ram/${renamePic}`,
     };
 
-    const response = await CharService.create(character);
-    onCreate(response);
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => CharService.create(character),
+
+      [ActionMode.ATUALIZAR]: () =>
+        CharService.upById(charToEdit?._id, character),
+    };
+
+    const response = await serviceCall[mode]();
+
+    const actionResponse = {
+      [ActionMode.NORMAL]: () => onCreate(response),
+      [ActionMode.ATUALIZAR]: () => onEdit(response),
+    };
+
+    actionResponse[mode]();
+
+    const reset = {
+      nome: '',
+      descricao: '',
+      foto: '',
+    };
+
+    setCreateState(reset);
     closeModal();
   };
 
@@ -48,6 +80,10 @@ function ModalCreateEdit({ closeModal, onCreate, onEdit, onDel, mode }) {
     <ModalGen closeModal={closeModal}>
       <div className="ModalCreate">
         <form className="formCreate" autoComplete="off">
+          <h2>
+            {ActionMode.ATUALIZAR === mode ? 'ATUALIZAR ' : 'ADICIONAR '}
+            PERSONAGEM
+          </h2>
           <div>
             <label htmlFor="nome">Nome:</label>
             <input
@@ -85,7 +121,6 @@ function ModalCreateEdit({ closeModal, onCreate, onEdit, onDel, mode }) {
               type="file"
               name="foto"
               id="foto"
-              value={createState.foto}
               accept="image/png, image/gif,image/jpg ,image/jpeg"
               onChange={(e) => handleChange(e, 'foto')}
             />
@@ -93,12 +128,12 @@ function ModalCreateEdit({ closeModal, onCreate, onEdit, onDel, mode }) {
 
           <span className="btnGroup">
             <button
-              onClick={createChar}
+              onClick={handleSend}
               type="button"
               disabled={disable}
               className="btnForm create"
             >
-              CRIAR
+              {ActionMode.ATUALIZAR === mode ? 'EDITAR' : 'CRIAR'}
             </button>
 
             <button type="button" className="btnForm back" onClick={closeModal}>

@@ -10,6 +10,14 @@
   flex-direction: column;
 }
 
+.formCreate h2 {
+  text-align: center;
+  margin: 16px 8px;
+  color: rgb(0, 255, 106);
+  font-weight: bolder;
+  text-shadow:  2px 2px 4px rgb(255, 55, 138);
+}
+
 .formCreate div {
   display: flex;
   flex-direction: column;

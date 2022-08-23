@@ -2,22 +2,24 @@ import { ActionMode } from 'constants';
 import './card.css';
 
 function Card(props) {
-
-  const badgeAction = (canRender) =>{
-    if(canRender){
+  const badgeAction = (canRender) => {
+    if (canRender) {
       return (
-        <span className="cardTag" onClick={() => props.clickIten()}>
+        <span
+          className={`${props.mode !== ActionMode.NORMAL &&
+            'cardTag'} ${props.mode === ActionMode.DELETAR && 'tagDEL'}`}
+        >
           {props.mode}
         </span>
       );
     }
-  }
-
-  
+  };
 
   return (
     <div
-      className={`card ${props.mode !== ActionMode.NORMAL && 'cardDisable'}`}
+      className={`card ${props.mode !== ActionMode.NORMAL &&
+        'cardDisable'} ${props.mode === ActionMode.DELETAR && 'cardDEL'}`}
+      onClick={() => props.clickIten(props.id)}
     >
       <div
         className={`cardImg ${props.mode !== ActionMode.NORMAL &&
@@ -25,7 +27,9 @@ function Card(props) {
       >
         <img src={props.foto} alt={props.nome} />
       </div>
+
       {badgeAction(props.mode !== ActionMode.NORMAL)}
+
       <div
         className={`cardContent ${props.mode !== ActionMode.NORMAL &&
           'cardContentDisable'} `}

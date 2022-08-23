@@ -5,15 +5,20 @@ import './cardList.css';
 import { CharService } from 'services/CharService';
 import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
 
-function CardList({ newChar, mode, editChar, deleteChar }) {
+function CardList({ newChar, mode, updateChar, deleteChar, charEdited }) {
   const [characters, setCharacters] = useState([]);
-
-  const [charModal, setCharModal] = useState(false)
+ 
+  const [charModal, setCharModal] = useState(false);
 
   const getList = async () => {
     const response = await CharService.getAll();
     setCharacters(response);
   };
+
+   useEffect(() => {
+     getList();
+   }, [charEdited]);
+
 
   const addNewChar = useCallback(
     (newChar) => {
@@ -24,27 +29,28 @@ function CardList({ newChar, mode, editChar, deleteChar }) {
   );
 
   useEffect(() => {
-    if (newChar && !characters.map(({ id }) => id).includes(newChar.id)) {
+    if (
+      newChar &&
+      !characters.map(async ({ id }) => await id).includes(newChar._id)
+    ) {
       addNewChar(newChar);
     }
   }, [addNewChar, newChar, characters]);
 
-  useEffect(() => {
-    getList();
-  }, [addNewChar, newChar, characters]);
+ 
+  const getById = async (id) => {
+    const response = await CharService.getById(id);
 
+    const mapper = {
+      [ActionMode.NORMAL]: () => setCharModal(false),
+      [ActionMode.ATUALIZAR]: () => updateChar(response),
+      [ActionMode.DELETAR]: () => deleteChar(response),
+    };
 
-   const getById = async (id) => {
-     const response = await CharService.getById(id);
-
-     const mapper = {
-       [ActionMode.NORMAL]: () => setCharModal(response),
-       [ActionMode.ATUALIZAR]: () => editChar(response),
-       [ActionMode.DELETAR]: () => deleteChar(response),
-     };
-
-     mapper[mode]();
-   };
+    mapper[mode]();
+  };
+  
+ console.log(newChar);
 
   return (
     <div className="cardList">
@@ -55,15 +61,14 @@ function CardList({ newChar, mode, editChar, deleteChar }) {
           descricao={char.descricao}
           foto={char.foto}
           key={`Char - ${index}`}
-          clickIten ={(Id) => getById(Id)}
+          id={char._id}
+          clickIten={(Id) => getById(Id)}
         />
       ))}
 
-      {charModal && (<ModalCreateEdit 
-      onEdit={charModal}
-      closeModal={setCharModal(false)}
-      
-      />)}
+      {charModal && (
+        <ModalCreateEdit onEdit={charModal} closeModal={setCharModal(false)} />
+      )}
     </div>
   );
 }
