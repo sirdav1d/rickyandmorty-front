@@ -33,8 +33,5 @@ export const CharService = {
            fetch(Api.charDeleteById(id), {
              method: 'DELETE',
              mode: 'cors',
-             headers: {
-               'Content-Type': 'application/json',
-             },
            }).then(parseResponse),
        };
