@@ -16,7 +16,7 @@ const DeleteModal = ({ closeModal, charToDel, onDel }) => {
       <div className="DeleteModal">
         <h1 className="titleModal">CONFIRMAÇÃO!</h1>
         <p className="contextModal">
-          Você realmente quer apagar o <b> {charToDel.nome}</b>
+          Você realmente quer apagar <b> {charToDel.nome}</b>
         </p>
 
        
