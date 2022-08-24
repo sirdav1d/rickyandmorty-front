@@ -65,15 +65,14 @@
   margin: 0 4px;
 }
 
-
-.btnDelete{
+.btnDelete {
   background-color: rgb(255, 44, 44);
   transform: scale(1.2);
   opacity: 1;
 }
 
-.btnDelete:hover{
-   animation: none !important;
+.btnDelete:hover {
+  animation: none !important;
 }
 
 .btnActive {
@@ -96,6 +95,8 @@
 
 .btnGen:disabled {
   background-color: rgb(141, 141, 141);
+  animation: none;
+  opacity: 0.8;
 }
 
 .navFind {
@@ -106,7 +107,7 @@
 
 .navFind input {
   padding: 4px 8px;
-  border-radius: 20px;
+  border-radius: 8px;
   width: 324px;
   outline: none;
   border: none;

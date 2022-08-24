@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+.DeleteModal img{
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  margin: 8px auto;
+  border-radius: 8px;
+}
+
+
+
 .titleModal {
   text-align: center;
   margin: 8px 0 24px;
@@ -37,10 +48,13 @@
   box-shadow: 4px 4px 2px var(--black);
   border: none;
   cursor: pointer;
+  opacity: .8;
+  transition: all .6s ease;
 }
 
 .btn:hover {
   animation: btnAnimation 0.8s ease-out alternate infinite;
+  opacity: 1;
 }
 
 .btnBack {

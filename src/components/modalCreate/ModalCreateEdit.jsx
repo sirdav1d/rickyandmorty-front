@@ -41,13 +41,13 @@ function ModalCreateEdit({
 
   const handleSend = async () => {
     const { nome, descricao, foto } = createState;
-    const renamePic = foto.split(/\\|\//).pop();
+    // const renamePic = foto.split(/\\|\//).pop();
 
     const character = {
       ...(charToEdit && { _id: charToEdit?._id }),
       nome: nome,
       descricao: descricao,
-      foto: `./assets/img-ram/${renamePic}`,
+      foto: foto,
     };
 
     const serviceCall = {
@@ -114,11 +114,11 @@ function ModalCreateEdit({
           <div>
             <label htmlFor="foto">
               {!createState.foto.length
-                ? 'Selecione uma imagem:'
+                ? 'Digite URL da Imagem:'
                 : createState.foto}
             </label>
             <input
-              type="file"
+              type="text"
               name="foto"
               id="foto"
               accept="image/png, image/gif,image/jpg ,image/jpeg"

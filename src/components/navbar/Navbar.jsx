@@ -24,12 +24,16 @@ function Navbar({ create, findById, update, mode, deleta }) {
             onChange={(e) => setInputId(e.target.value)}
             value={inputId}
           />
-          <button type="button" className="btnGen">
+          <button
+            type="button"
+            className="btnGen"
+            disabled={mode !== ActionMode.NORMAL}
+            onClick={() => getById(inputId)}
+          >
             <img
               className="btnGen-find"
               src={'assets/img-ram/lupa.png'}
               alt="lupa"
-              onClick={() => getById(inputId)}
             />
           </button>
         </div>
