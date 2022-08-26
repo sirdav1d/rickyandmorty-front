@@ -11,9 +11,8 @@
   justify-content: space-around;
   overflow-x: hidden;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.422);
-  position:fixed;
- 
-
+  position: fixed;
+  z-index: 999999999;
 }
 
 .navTitle {
@@ -24,7 +23,6 @@
   font-weight: 900;
   font-size: 2.2rem;
   animation: textShadowAnimation 3s ease-in infinite alternate;
- 
 }
 
 @keyframes textShadowAnimation {
@@ -47,7 +45,6 @@
   justify-content: space-around;
   align-items: flex-end;
   list-style: none;
-
 }
 
 .containerBtnGen {
@@ -104,7 +101,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .Navbar{
+  .Navbar {
     padding: 28px 16px;
   }
   .navTitle {
