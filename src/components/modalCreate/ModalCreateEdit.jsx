@@ -3,6 +3,7 @@ import './modalCreateEdit.css';
 import { useState, useEffect } from 'react';
 import ModalGen from 'components/modalGen/ModalGen';
 import { CharService } from 'services/CharService';
+import React from 'react';
 function ModalCreateEdit({ closeModal, onCreate, charToEdit, onEdit, mode }) {
   const form = {
     nome: charToEdit?.nome ?? '',

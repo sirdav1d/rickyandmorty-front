@@ -1,13 +1,15 @@
 import { ActionMode } from 'constants';
 import './card.css';
+import React from 'react';
 
 function Card(props) {
   const badgeAction = (canRender) => {
     if (canRender) {
       return (
         <span
-          className={`${props.mode !== ActionMode.NORMAL &&
-            'cardTag'} ${props.mode === ActionMode.DELETAR && 'tagDEL'}`}
+          className={`${props.mode !== ActionMode.NORMAL && 'cardTag'} ${
+            props.mode === ActionMode.DELETAR && 'tagDEL'
+          }`}
         >
           {props.mode}
         </span>
@@ -22,13 +24,15 @@ function Card(props) {
 
   return (
     <div
-      className={`card ${props.mode !== ActionMode.NORMAL &&
-        'cardDisable'} ${props.mode === ActionMode.DELETAR && 'cardDEL'}`}
+      className={`card ${props.mode !== ActionMode.NORMAL && 'cardDisable'} ${
+        props.mode === ActionMode.DELETAR && 'cardDEL'
+      }`}
       onClick={(e) => handleClick(e, props.id)}
     >
       <div
-        className={`cardImg ${props.mode !== ActionMode.NORMAL &&
-          'cardImgDisable'} `}
+        className={`cardImg ${
+          props.mode !== ActionMode.NORMAL && 'cardImgDisable'
+        } `}
       >
         <img src={props.foto} alt={props.nome} />
       </div>
@@ -36,8 +40,9 @@ function Card(props) {
       {badgeAction(props.mode !== ActionMode.NORMAL)}
 
       <div
-        className={`cardContent ${props.mode !== ActionMode.NORMAL &&
-          'cardContentDisable'} `}
+        className={`cardContent ${
+          props.mode !== ActionMode.NORMAL && 'cardContentDisable'
+        } `}
       >
         <h1>{props.nome}</h1>
         <p>{props.descricao}</p>

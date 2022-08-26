@@ -5,6 +5,7 @@ import './cardList.css';
 import { CharService } from 'services/CharService';
 import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
 import { matchByText } from 'helpers/utils';
+import React from 'react';
 
 function CardList({
   newChar,
@@ -15,9 +16,12 @@ function CardList({
   charDel,
 }) {
   const [characters, setCharacters] = useState([]);
+
   const [charFiltered, setcharFiltered] = useState([]);
 
   const [charModal, setCharModal] = useState(false);
+
+  console.log(newChar);
 
   const getList = async () => {
     const response = await CharService.getAll();
@@ -31,27 +35,25 @@ function CardList({
     setcharFiltered(lista);
   };
 
-  useEffect(() => {
-    getList();
-  }, [charEdited, charDel, newChar]);
-
   const addNewChar = useCallback(
     (newChar) => {
       const list = [...characters, newChar];
-      setCharacters(list);
-      getList();
+      setcharFiltered(list);
     },
 
-    [characters],
+    [characters, newChar],
   );
 
   useEffect(() => {
     if (newChar && !characters.map(({ id }) => id).includes(newChar._id)) {
       addNewChar(newChar);
-      getList();
     }
     setcharFiltered(characters);
   }, [addNewChar, newChar, characters]);
+
+  useEffect(() => {
+    getList();
+  }, [charEdited, charDel, newChar]);
 
   const getById = async (id) => {
     const response = await CharService.getById(id);
@@ -65,7 +67,6 @@ function CardList({
     mapper[mode]();
   };
 
-  console.log(newChar);
   return (
     <div className="cardListContainer">
       <input

@@ -1,9 +1,8 @@
 import { ActionMode } from 'constants';
 import './navbar.css';
+import React from 'react';
 
 function Navbar({ create, update, mode, deleta }) {
-
-
   return (
     <div className="Navbar">
       <a className="navTitle" href="/" rel="noopener noreferrer">

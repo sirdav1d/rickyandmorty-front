@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { ActionMode } from 'constants';
 import DeleteModal from 'components/deleteModal/DeleteModal';
 import './home.css';
@@ -15,7 +16,7 @@ function Home() {
   const [charEdited, setCharEdited] = useState();
 
   const [showModalCreated, setShowModalCreated] = useState(false);
-  const [charCreated, setCharCreated] = useState();
+  const [charCreated, setCharCreated] = useState('');
 
   const handleActions = (action) => {
     const newAction = modoAtual === action ? ActionMode.NORMAL : action;
@@ -42,7 +43,7 @@ function Home() {
     setCharToDel();
     setModoAtual(ActionMode.NORMAL);
   };
-
+  console.log(charCreated);
   return (
     <div className="Home">
       <Navbar
