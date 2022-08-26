@@ -33,14 +33,15 @@ function CardList({
 
   useEffect(() => {
     getList();
-  }, [charEdited, charDel]);
+  }, [charEdited, charDel, newChar]);
 
   const addNewChar = useCallback(
     (newChar) => {
       const list = [...characters, newChar];
       setCharacters(list);
-      
+      getList();
     },
+
     [characters],
   );
 
@@ -50,7 +51,6 @@ function CardList({
       getList();
     }
     setcharFiltered(characters);
-    getList();
   }, [addNewChar, newChar, characters]);
 
   const getById = async (id) => {
@@ -65,7 +65,7 @@ function CardList({
     mapper[mode]();
   };
 
-  // console.log(charFiltered)
+  console.log(newChar);
   return (
     <div className="cardListContainer">
       <input

@@ -3,15 +3,7 @@ import './modalCreateEdit.css';
 import { useState, useEffect } from 'react';
 import ModalGen from 'components/modalGen/ModalGen';
 import { CharService } from 'services/CharService';
-function ModalCreateEdit({
-  closeModal,
-  onCreate,
-  charToEdit,
-  onEdit,
-  charToDel,
-  onDel,
-  mode,
-}) {
+function ModalCreateEdit({ closeModal, onCreate, charToEdit, onEdit, mode }) {
   const form = {
     nome: charToEdit?.nome ?? '',
     descricao: charToEdit?.descricao ?? '',
@@ -41,7 +33,6 @@ function ModalCreateEdit({
 
   const handleSend = async () => {
     const { nome, descricao, foto } = createState;
-    // const renamePic = foto.split(/\\|\//).pop();
 
     const character = {
       ...(charToEdit && { _id: charToEdit?._id }),
