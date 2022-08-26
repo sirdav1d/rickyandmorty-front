@@ -15,17 +15,16 @@ function Card(props) {
     }
   };
 
-  const handleClick = (e, id) =>{
-    e.stopPropagation()
-    props.clickIten(id)
-  }
-
+  const handleClick = (e, id) => {
+    e.stopPropagation();
+    props.clickIten(id);
+  };
 
   return (
     <div
       className={`card ${props.mode !== ActionMode.NORMAL &&
         'cardDisable'} ${props.mode === ActionMode.DELETAR && 'cardDEL'}`}
-      onClick={(e)=>handleClick(e, props.id)}
+      onClick={(e) => handleClick(e, props.id)}
     >
       <div
         className={`cardImg ${props.mode !== ActionMode.NORMAL &&

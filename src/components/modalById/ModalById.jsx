@@ -4,20 +4,16 @@ import Card from 'components/card/Card';
 import { useState, useEffect } from 'react';
 // import { CharService } from 'services/CharService';
 
-const ModalById = ( {closeModal, onFind }) => {
-
-
-  const [findState, setFindState] = useState("");
-
+const ModalById = ({ closeModal, onFind }) => {
+  const [findState, setFindState] = useState('');
 
   useEffect(() => {
     setFindState(onFind);
-
   }, [onFind]);
 
-  const {nome, descricao, foto, _id} = findState
+  const { nome, descricao, foto, _id } = findState;
 
-  console.log(findState)
+  console.log(findState);
 
   return (
     <ModalGen className="modalGen" closeModal={closeModal}>

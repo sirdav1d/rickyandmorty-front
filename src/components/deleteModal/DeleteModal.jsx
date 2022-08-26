@@ -3,12 +3,11 @@ import './deleteModal.css';
 import ModalGen from 'components/modalGen/ModalGen';
 
 const DeleteModal = ({ closeModal, charToDel, onDel }) => {
-
   const handleDelete = async (e, char) => {
-    e.stopPropagation()
+    e.stopPropagation();
     await CharService.delById(char._id);
-   await onDel(char);
-   await closeModal();
+    await onDel(char);
+    await closeModal();
   };
 
   return (
@@ -19,9 +18,7 @@ const DeleteModal = ({ closeModal, charToDel, onDel }) => {
           Você realmente quer apagar <b> {charToDel.nome}</b>
         </p>
 
-       
-          <img src={charToDel.foto} alt={charToDel.nome} />
-      
+        <img src={charToDel.foto} alt={charToDel.nome} />
 
         <div className="bntGroup">
           <button className="btnBack btn" onClick={closeModal}>
