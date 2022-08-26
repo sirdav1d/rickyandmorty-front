@@ -21,12 +21,14 @@ function CardList({
 
   const [charModal, setCharModal] = useState(false);
 
-  console.log(newChar);
-
   const getList = async () => {
     const response = await CharService.getAll();
     setCharacters(response);
   };
+
+  useEffect(() => {
+    getList();
+  }, [charEdited, charDel, newChar]);
 
   const fillByTitle = ({ target }) => {
     const lista = [...characters].filter(({ nome }) =>
@@ -36,12 +38,12 @@ function CardList({
   };
 
   const addNewChar = useCallback(
-    (newChar) => {
-      const list = [...characters, newChar];
-      setcharFiltered(list);
+    (char) => {
+      const list = [...characters, char];
+      setCharacters(list);
     },
 
-    [characters, newChar],
+    [characters],
   );
 
   useEffect(() => {
@@ -50,10 +52,6 @@ function CardList({
     }
     setcharFiltered(characters);
   }, [addNewChar, newChar, characters]);
-
-  useEffect(() => {
-    getList();
-  }, [charEdited, charDel, newChar]);
 
   const getById = async (id) => {
     const response = await CharService.getById(id);

@@ -43,7 +43,7 @@ function Home() {
     setCharToDel();
     setModoAtual(ActionMode.NORMAL);
   };
-  console.log(charCreated);
+
   return (
     <div className="Home">
       <Navbar

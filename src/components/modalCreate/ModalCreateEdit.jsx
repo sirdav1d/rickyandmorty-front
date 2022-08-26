@@ -11,6 +11,12 @@ function ModalCreateEdit({ closeModal, onCreate, charToEdit, onEdit, mode }) {
     foto: charToEdit?.foto ?? '',
   };
 
+  const reset = {
+    nome: '',
+    descricao: '',
+    foto: '',
+  };
+
   const [createState, setCreateState] = useState(form);
 
   const handleChange = (e, name) => {
@@ -43,10 +49,10 @@ function ModalCreateEdit({ closeModal, onCreate, charToEdit, onEdit, mode }) {
     };
 
     const serviceCall = {
-      [ActionMode.NORMAL]: async () => await CharService.create(character),
+      [ActionMode.NORMAL]: () => CharService.create(character),
 
-      [ActionMode.ATUALIZAR]: async () =>
-        await CharService.upById(charToEdit?._id, character),
+      [ActionMode.ATUALIZAR]: () =>
+        CharService.upById(charToEdit?._id, character),
     };
 
     const response = await serviceCall[mode]();
@@ -57,12 +63,6 @@ function ModalCreateEdit({ closeModal, onCreate, charToEdit, onEdit, mode }) {
     };
 
     actionResponse[mode]();
-
-    const reset = {
-      nome: '',
-      descricao: '',
-      foto: '',
-    };
 
     setCreateState(reset);
     await closeModal();
