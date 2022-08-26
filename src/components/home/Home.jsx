@@ -6,7 +6,6 @@ import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import CardList from 'components/cardList/CardList';
 import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
-import ModalById from 'components/modalById/ModalById';
 
 function Home() {
   const [modoAtual, setModoAtual] = useState(ActionMode.NORMAL);
@@ -17,9 +16,6 @@ function Home() {
 
   const [showModalCreated, setShowModalCreated] = useState(false);
   const [charCreated, setCharCreated] = useState();
-
-  const [showModalById, setShowModalById] = useState(false);
-  const [charFound, setCharFound] = useState('');
 
   const handleActions = (action) => {
     const newAction = modoAtual === action ? ActionMode.NORMAL : action;
@@ -40,8 +36,7 @@ function Home() {
 
   const handleCloseModal = () => {
     setShowModalCreated(false);
-    setShowModalById(false);
-    setCharFound();
+
     setCharCreated();
     setCharToEdit();
     setCharToDel();
@@ -55,15 +50,7 @@ function Home() {
         create={() => setShowModalCreated(true)}
         update={() => handleActions(ActionMode.ATUALIZAR)}
         deleta={() => handleActions(ActionMode.DELETAR)}
-        findById={(character) => {
-          setCharFound(character);
-          setShowModalById(true);
-        }}
       ></Navbar>
-
-      {showModalById && (
-        <ModalById onFind={charFound} closeModal={handleCloseModal}></ModalById>
-      )}
 
       {showModalCreated && (
         <ModalCreateEdit

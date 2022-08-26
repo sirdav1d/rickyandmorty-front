@@ -4,6 +4,7 @@ import Card from 'components/card/Card';
 import './cardList.css';
 import { CharService } from 'services/CharService';
 import ModalCreateEdit from 'components/modalCreate/ModalCreateEdit';
+import { matchByText } from 'helpers/utils';
 
 function CardList({
   newChar,
@@ -14,12 +15,20 @@ function CardList({
   charDel,
 }) {
   const [characters, setCharacters] = useState([]);
+  const [charFiltered, setcharFiltered] = useState([]);
 
   const [charModal, setCharModal] = useState(false);
 
   const getList = async () => {
     const response = await CharService.getAll();
     setCharacters(response);
+  };
+
+  const fillByTitle = ({ target }) => {
+    const lista = [...characters].filter(({ nome }) =>
+      matchByText(nome, target.value),
+    );
+    setcharFiltered(lista);
   };
 
   useEffect(() => {
@@ -38,9 +47,8 @@ function CardList({
   useEffect(() => {
     if (newChar && !characters.map(({ id }) => id).includes(newChar._id)) {
       addNewChar(newChar);
-      getList();
     }
-    getList();
+    setcharFiltered(characters);
   }, [addNewChar, newChar, characters]);
 
   const getById = async (id) => {
@@ -55,23 +63,35 @@ function CardList({
     mapper[mode]();
   };
 
+  // console.log(charFiltered)
   return (
-    <div className="cardList">
-      {characters.map((char, index) => (
-        <Card
-          mode={mode}
-          nome={char.nome}
-          descricao={char.descricao}
-          foto={char.foto}
-          key={`Char - ${index}`}
-          id={char._id}
-          clickIten={(Id) => getById(Id)}
-        />
-      ))}
+    <div className="cardListContainer">
+      <input
+        className="listFill"
+        onChange={fillByTitle}
+        placeholder="Pesquise pelo nome"
+      />
 
-      {charModal && (
-        <ModalCreateEdit onEdit={charModal} closeModal={setCharModal(false)} />
-      )}
+      <div className="cardList">
+        {charFiltered.map((char, index) => (
+          <Card
+            mode={mode}
+            nome={char.nome}
+            descricao={char.descricao}
+            foto={char.foto}
+            key={`Char - ${index}`}
+            id={char._id}
+            clickIten={(Id) => getById(Id)}
+          />
+        ))}
+
+        {charModal && (
+          <ModalCreateEdit
+            onEdit={charModal}
+            closeModal={setCharModal(false)}
+          />
+        )}
+      </div>
     </div>
   );
 }
