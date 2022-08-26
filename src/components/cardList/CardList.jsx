@@ -28,7 +28,7 @@ function CardList({
 
   useEffect(() => {
     getList();
-  }, [charEdited, charDel, newChar]);
+  }, [charEdited, charDel]);
 
   const fillByTitle = ({ target }) => {
     const lista = [...characters].filter(({ nome }) =>
@@ -38,8 +38,8 @@ function CardList({
   };
 
   const addNewChar = useCallback(
-    (char) => {
-      const list = [...characters, char];
+    async (char) => {
+      const list =  [...characters, char];
       setCharacters(list);
     },
 
