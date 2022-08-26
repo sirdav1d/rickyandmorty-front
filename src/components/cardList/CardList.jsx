@@ -39,7 +39,7 @@ function CardList({
     (newChar) => {
       const list = [...characters, newChar];
       setCharacters(list);
-      getList();
+      
     },
     [characters],
   );
@@ -47,8 +47,10 @@ function CardList({
   useEffect(() => {
     if (newChar && !characters.map(({ id }) => id).includes(newChar._id)) {
       addNewChar(newChar);
+      getList();
     }
     setcharFiltered(characters);
+    getList();
   }, [addNewChar, newChar, characters]);
 
   const getById = async (id) => {

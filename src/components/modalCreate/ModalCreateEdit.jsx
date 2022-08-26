@@ -112,11 +112,7 @@ function ModalCreateEdit({
           </div>
 
           <div>
-            <label htmlFor="foto">
-              {!createState.foto.length
-                ? 'Digite URL da Imagem:'
-                : createState.foto}
-            </label>
+            <label htmlFor="foto">Digite URL da Imagem:</label>
             <input
               type="text"
               name="foto"
