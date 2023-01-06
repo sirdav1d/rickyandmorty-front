@@ -9,6 +9,6 @@ const CharContext = {
 };
 
 export const Api = {
-  baseUrl: 'https://api-ramv1.herokuapp.com',
+  baseUrl: 'react-rickandmorty-huz8gpe1d-sirdav1d.vercel.app',
   ...CharContext,
 };
