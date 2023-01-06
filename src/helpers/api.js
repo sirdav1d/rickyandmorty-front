@@ -9,6 +9,6 @@ const CharContext = {
 };
 
 export const Api = {
-  baseUrl: 'react-rickandmorty-huz8gpe1d-sirdav1d.vercel.app',
+  baseUrl: 'mod-3-projeto-02-backend-7sstpwoo8-sirdav1d.vercel.app',
   ...CharContext,
 };
