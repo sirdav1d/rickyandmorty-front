@@ -9,6 +9,6 @@ const CharContext = {
 };
 
 export const Api = {
-  baseUrl: 'mod-3-projeto-02-backend-7sstpwoo8-sirdav1d.vercel.app',
+  baseUrl: 'https://ram-api.onrender.com',
   ...CharContext,
 };
